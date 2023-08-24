@@ -1,4 +1,15 @@
 const os = require("os");
+const io = require("socket.io-client");
+
+const socket = io("http://localhost:3000");
+
+socket.on("connect", () => {
+  console.log("We have connected to the server!");
+});
+
+socket.on("client-connected", (message) => {
+  console.log(message);
+});
 
 function cpuAverage() {
   const cpus = os.cpus();
